@@ -10,5 +10,5 @@ symbols = 25
 
 total_symbols = page * str_ * symbols
 book_size = total_symbols * symbol_size_byte
-numbers_of_books = disk_size_mbyte / (book_size / (1024 * 1024))
-print("Количество книг, помещающихся на дискету:", round(numbers_of_books))
+numbers_of_books = int(disk_size_mbyte / (book_size / (1024 * 1024)))
+print("Количество книг, помещающихся на дискету:", numbers_of_books)
