@@ -35,19 +35,19 @@ class Water:
         """
         return f"{self.__class__.__name__}({self.mineral}, {self.pH})"
 
-    def drinkable(self) -> str:
+    def check_drinkable(self) -> str:
         """
         Метод, проверяющий пригодность воды для питья
         :return: Пригодность для питья
 
         Примеры:
         >>> Water(True, 10)
-        >>> Water.drinkable()
+        >>> Water.check_drinkable()
         Вода техническая, не пригодна для питья
         """
         ...
 
-    def other_pH(self, new_pH:Union[float, int]):
+    def change_pH(self, new_pH:Union[float, int]):
         """"
         Метод, изменяющий уровень pH воды
         :param new_pH: Новый урвоень pH
@@ -55,7 +55,7 @@ class Water:
 
         Примеры:
         >>> Water(True, 10)
-        >>> Water.other_pH(8.5)
+        >>> Water.change_pH(8.5)
         Water.pH = 8.5
         """
         ...
@@ -87,7 +87,7 @@ class WaterDelivery(Water):
         """
         return f"{self.__class__.__name__}({self.mineral}, {self.pH}, {self.bottle})"
 
-    def other_pH(self, new_pH:Union[float, int]) -> str:
+    def change_pH(self, new_pH:Union[float, int]) -> str:
         """
         Метода, изменяющий уровень pH воды
         Перегрузка выполнена в связи с введением предупреждения пользователя
@@ -96,7 +96,7 @@ class WaterDelivery(Water):
 
         Примеры:
         >>> WaterDelivery(True, 5.5, 2)
-        >>> Water.other_pH(10)
+        >>> Water.change_pH(10)
         Water.pH = 10
         Внимание! При указанном уровне pH воду пить нельзя.
         """
@@ -128,7 +128,7 @@ class WaterFilter(Water):
         """
         return f"{self.__class__.__name__}({self.mineral}, {self.pH}, {self.installation}"
 
-    def drinkable(self) -> str:
+    def check_drinkable(self) -> str:
         """
         Метод, проверяющий пригодность воды для питья
         Перегерузка выполнена в связи с вводом дополнительной информации пользователю
@@ -136,7 +136,7 @@ class WaterFilter(Water):
 
         Примеры:
         >>> WaterFilter(True, 10, True)
-        >>> WaterFilter.drinkable()
+        >>> WaterFilter.check_drinkable()
         Вода техническая, не пригодна для питья, нет смысла устанавливать фильтр, будет поставлен только сифон
         для минерализации
         """
